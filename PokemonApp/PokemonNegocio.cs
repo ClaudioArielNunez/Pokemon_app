@@ -20,7 +20,7 @@ namespace PokemonApp
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion as Tipo FROM POKEMONS P, ELEMENTOS E WHERE P.ID =E.ID";
+                comando.CommandText = "SELECT Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion as Tipo FROM POKEMONS P, ELEMENTOS E WHERE P.IdTipo =E.ID";
                 comando.Connection = conexion;
 
                 conexion.Open();
