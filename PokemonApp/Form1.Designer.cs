@@ -41,14 +41,14 @@
             this.dgvPokemon.Name = "dgvPokemon";
             this.dgvPokemon.RowHeadersWidth = 62;
             this.dgvPokemon.RowTemplate.Height = 28;
-            this.dgvPokemon.Size = new System.Drawing.Size(589, 262);
+            this.dgvPokemon.Size = new System.Drawing.Size(655, 262);
             this.dgvPokemon.TabIndex = 0;
             // 
             // pbxPokemon
             // 
-            this.pbxPokemon.Location = new System.Drawing.Point(660, 86);
+            this.pbxPokemon.Location = new System.Drawing.Point(701, 86);
             this.pbxPokemon.Name = "pbxPokemon";
-            this.pbxPokemon.Size = new System.Drawing.Size(267, 262);
+            this.pbxPokemon.Size = new System.Drawing.Size(226, 262);
             this.pbxPokemon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxPokemon.TabIndex = 1;
             this.pbxPokemon.TabStop = false;

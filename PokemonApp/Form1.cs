@@ -12,6 +12,7 @@ namespace PokemonApp
 {
     public partial class Form1 : Form
     {
+        private List<Pokemon> listaPokemon;
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +21,10 @@ namespace PokemonApp
         private void Form1_Load(object sender, EventArgs e)
         {
             PokemonNegocio negocio = new PokemonNegocio();
-            dgvPokemon.DataSource = negocio.listar();
+            listaPokemon = negocio.listar();
+            
+            dgvPokemon.DataSource = listaPokemon;
+            pbxPokemon.Load(listaPokemon[0].UrlImagen);
         }
     }
 }
