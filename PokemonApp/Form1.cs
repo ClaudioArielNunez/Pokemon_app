@@ -47,5 +47,7 @@ namespace PokemonApp
                 MessageBox.Show("Ash no pudo capturar ese pokemon aún!");
             }
         }
+
+        
     }
 }
