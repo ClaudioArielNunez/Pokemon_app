@@ -50,6 +50,10 @@ namespace PokemonApp
             }
         }
 
-        
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmAltaPokemon alta = new FrmAltaPokemon();
+            alta.ShowDialog();
+        }
     }
 }
