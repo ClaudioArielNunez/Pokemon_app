@@ -46,7 +46,7 @@ namespace PokemonApp
             {
 
                 pbxPokemon.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBqOKMMO9oLUSJnPu2CvEpWxYy8Q0oYDA8bA&usqp=CAU");
-                MessageBox.Show("Ash no pudo capturar ese pokemon aún!");
+                //MessageBox.Show("Ash no pudo capturar ese pokemon aún!");
             }
         }
 
