@@ -54,5 +54,13 @@ namespace negocio
             }   
             
         }
+        public void agregar(Pokemon nuevo)
+        {
+            //necesita conectarse a la base de datos
+        }
+        public void modificar(Pokemon modificar) 
+        {
+            //necesita conectarse tambien
+        }
     }
 }
