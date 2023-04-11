@@ -23,10 +23,19 @@ namespace PokemonApp
         private void Form1_Load(object sender, EventArgs e)
         {
             PokemonNegocio negocio = new PokemonNegocio();
-            listaPokemon = negocio.listar();            
-            dgvPokemon.DataSource = listaPokemon;
-            dgvPokemon.Columns["UrlImagen"].Visible = false;
-            cargarImagen(listaPokemon[0].UrlImagen);
+            try
+            {
+                listaPokemon = negocio.listar();
+                dgvPokemon.DataSource = listaPokemon;
+                dgvPokemon.Columns["UrlImagen"].Visible = false;
+                cargarImagen(listaPokemon[0].UrlImagen);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
