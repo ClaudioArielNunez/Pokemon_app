@@ -33,6 +33,8 @@ namespace PokemonApp
                 poke.Numero = int.Parse(txtNum.Text);
                 poke.Nombre = txtName.Text;
                 poke.Descripcion = txtDesc.Text;
+                poke.Tipo = (Elemento)cboTipo.SelectedItem;
+                poke.Debilidad = (Elemento)cboDeb.SelectedItem;
 
                 negocio.agregar(poke);
                 MessageBox.Show("Agregado exitosamente");
@@ -43,6 +45,21 @@ namespace PokemonApp
             {
 
                 MessageBox.Show(ex.ToString());//mostramos mensaje de error
+            }
+        }
+
+        private void FrmAltaPokemon_Load(object sender, EventArgs e)
+        {
+            ElementoNegocio elementoNegocio = new ElementoNegocio();
+            try
+            {
+                cboTipo.DataSource = elementoNegocio.listar();
+                cboDeb.DataSource = elementoNegocio.listar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
             }
         }
     }
