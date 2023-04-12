@@ -33,6 +33,7 @@ namespace PokemonApp
                 poke.Numero = int.Parse(txtNum.Text);
                 poke.Nombre = txtName.Text;
                 poke.Descripcion = txtDesc.Text;
+                poke.UrlImagen = txtUrlImagen.Text;
                 poke.Tipo = (Elemento)cboTipo.SelectedItem;
                 poke.Debilidad = (Elemento)cboDeb.SelectedItem;
 
@@ -60,6 +61,27 @@ namespace PokemonApp
             {
 
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            //usamos propiedad leave en textboxUrl
+
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxPokemon.Load(imagen);
+
+            }
+            catch (Exception ex)
+            {
+
+                pbxPokemon.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBqOKMMO9oLUSJnPu2CvEpWxYy8Q0oYDA8bA&usqp=CAU");
+                //MessageBox.Show("Ash no pudo capturar ese pokemon aún!");
             }
         }
     }
