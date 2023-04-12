@@ -22,6 +22,17 @@ namespace PokemonApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+
+        private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
+        {
+            
+            Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+            cargarImagen(seleccionado.UrlImagen);
+        }
+        private void cargar()
+        {
             PokemonNegocio negocio = new PokemonNegocio();
             try
             {
@@ -36,13 +47,6 @@ namespace PokemonApp
 
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
-        {
-            
-            Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagen);
         }
         private void cargarImagen(string imagen)
         {
@@ -63,6 +67,7 @@ namespace PokemonApp
         {
             FrmAltaPokemon alta = new FrmAltaPokemon();
             alta.ShowDialog();
+            cargar(); //actualiza tabla en el momento
         }
     }
 }
