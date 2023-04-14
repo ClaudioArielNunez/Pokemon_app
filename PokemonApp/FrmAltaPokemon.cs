@@ -14,9 +14,15 @@ namespace PokemonApp
 {
     public partial class FrmAltaPokemon : Form
     {
+        private Pokemon pokemon = null;
         public FrmAltaPokemon()
         {
             InitializeComponent();
+        }
+        public FrmAltaPokemon(Pokemon pokemon)
+        {
+            InitializeComponent();
+            this.pokemon = pokemon; //No lo recibe nulo
         }
 
         private void bntCancelar_Click(object sender, EventArgs e)
@@ -56,6 +62,17 @@ namespace PokemonApp
             {
                 cboTipo.DataSource = elementoNegocio.listar();
                 cboDeb.DataSource = elementoNegocio.listar();
+
+                //validacion
+                if (pokemon != null)
+                {
+                    //Precargo el pokemon
+                    txtNum.Text = pokemon.Numero.ToString();
+                    txtName.Text = pokemon.Nombre;
+                    txtDesc.Text = pokemon.Descripcion;
+                    txtUrlImagen.Text = pokemon.UrlImagen;
+                    cargarImagen(pokemon.UrlImagen); //corrige el delate de carga
+                }
             }
             catch (Exception ex)
             {

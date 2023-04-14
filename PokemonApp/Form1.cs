@@ -69,5 +69,18 @@ namespace PokemonApp
             alta.ShowDialog();
             cargar(); //actualiza tabla en el momento
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Pokemon seleccionado;
+            seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+
+            FrmAltaPokemon modificar = new FrmAltaPokemon(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+            
+
+            
+        }
     }
 }
