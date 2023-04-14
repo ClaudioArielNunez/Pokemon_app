@@ -67,6 +67,7 @@ namespace PokemonApp
         private void txtUrlImagen_Leave(object sender, EventArgs e)
         {
             //usamos propiedad leave en textboxUrl
+            cargarImagen(txtUrlImagen.Text);
 
         }
 
