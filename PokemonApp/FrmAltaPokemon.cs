@@ -61,7 +61,11 @@ namespace PokemonApp
             try
             {
                 cboTipo.DataSource = elementoNegocio.listar();
+                cboTipo.ValueMember = "Id";
+                cboTipo.DisplayMember = "Descripcion";
                 cboDeb.DataSource = elementoNegocio.listar();
+                cboDeb.ValueMember = "Id";
+                cboDeb.DisplayMember = "Descripcion";
 
                 //validacion
                 if (pokemon != null)
@@ -72,6 +76,8 @@ namespace PokemonApp
                     txtDesc.Text = pokemon.Descripcion;
                     txtUrlImagen.Text = pokemon.UrlImagen;
                     cargarImagen(pokemon.UrlImagen); //corrige el delate de carga
+                    cboTipo.SelectedValue = pokemon.Tipo.Id;
+                    cboDeb.SelectedValue = pokemon.Debilidad.Id;
                 }
             }
             catch (Exception ex)

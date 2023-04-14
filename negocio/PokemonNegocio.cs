@@ -21,7 +21,7 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion AS TIPO, D.Descripcion AS DEBILIDAD  FROM POKEMONS P , ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND P.IdDebilidad = D.Id";
+                comando.CommandText = "SELECT Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion AS TIPO, D.Descripcion AS DEBILIDAD, P.IdTipo, P.IdDebilidad  FROM POKEMONS P , ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND P.IdDebilidad = D.Id";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -39,8 +39,10 @@ namespace negocio
                     aux.UrlImagen = (string)lector["UrlImagen"];
 
                     aux.Tipo = new Elemento();
+                    aux.Tipo.Id = (int)lector["IdTipo"];
                     aux.Tipo.Descripcion = (string)lector["Tipo"];
                     aux.Debilidad = new Elemento();
+                    aux.Debilidad.Id = (int)lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)lector["Debilidad"];
 
                     lista.Add(aux);
