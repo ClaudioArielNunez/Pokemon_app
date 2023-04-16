@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using dominio;
+using System.ComponentModel.Design;
 
 namespace negocio
 {
@@ -15,13 +16,13 @@ namespace negocio
             List<Pokemon> lista = new List<Pokemon>();
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
-            SqlDataReader lector ;
-
+            SqlDataReader lector;
+              
             try
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion AS TIPO, D.Descripcion AS DEBILIDAD, P.IdTipo, P.IdDebilidad  FROM POKEMONS P , ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND P.IdDebilidad = D.Id";
+                comando.CommandText = "SELECT Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion AS TIPO, D.Descripcion AS DEBILIDAD, P.IdTipo, P.IdDebilidad, P.Id  FROM POKEMONS P , ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND P.IdDebilidad = D.Id";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -30,6 +31,7 @@ namespace negocio
                 while (lector.Read())
                 {
                     Pokemon aux = new Pokemon();
+                    aux.Id = (int)lector["Id"];
                     aux.Numero = lector.GetInt32(0);
                     aux.Nombre = lector.GetString(1);
                     aux.Descripcion = (string)lector["Descripcion"];
@@ -82,9 +84,32 @@ namespace negocio
                 datos.cerrarConeccion();
             }
         }
-        public void modificar(Pokemon modificar) 
+        public void modificar(Pokemon poke) 
         {
-            //necesita conectarse tambien
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE POKEMONS SET Numero = @numero, Nombre=@nombre, Descripcion=@desc ,UrlImagen=@img ,IdTipo=@idTipo ,IdDebilidad=@idDebilidad WHERE Id=@id");
+                datos.setearParametro("@numero", poke.Numero);
+                datos.setearParametro("@nombre", poke.Nombre);
+                datos.setearParametro("@desc", poke.Descripcion);
+                datos.setearParametro("@img", poke.UrlImagen);
+                datos.setearParametro("@idTipo", poke.Tipo.Id);
+                datos.setearParametro("@idDebilidad", poke.Debilidad.Id);
+                datos.setearParametro("@id", poke.Id);
+
+                datos.ejecutarAccion();
+ 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally 
+            { 
+                datos.cerrarConeccion();
+            }
         }
     }
 }

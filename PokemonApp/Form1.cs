@@ -39,6 +39,7 @@ namespace PokemonApp
                 listaPokemon = negocio.listar();
                 dgvPokemon.DataSource = listaPokemon;
                 dgvPokemon.Columns["UrlImagen"].Visible = false;
+                dgvPokemon.Columns["Id"].Visible = false; //ocultamos Id y Url
                 cargarImagen(listaPokemon[0].UrlImagen);
 
             }

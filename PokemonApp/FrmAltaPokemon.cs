@@ -23,6 +23,7 @@ namespace PokemonApp
         {
             InitializeComponent();
             this.pokemon = pokemon; //No lo recibe nulo
+            Text = "Modificar Pokemon"; //cambia el nombre del form
         }
 
         private void bntCancelar_Click(object sender, EventArgs e)
@@ -32,19 +33,32 @@ namespace PokemonApp
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Pokemon poke = new Pokemon(); //necesitamos using dominio
+            //Pokemon poke = new Pokemon(); //necesitamos using dominio
             PokemonNegocio negocio = new PokemonNegocio(); //agregamos using negocio 
             try
-            {
-                poke.Numero = int.Parse(txtNum.Text);
-                poke.Nombre = txtName.Text;
-                poke.Descripcion = txtDesc.Text;
-                poke.UrlImagen = txtUrlImagen.Text;
-                poke.Tipo = (Elemento)cboTipo.SelectedItem;
-                poke.Debilidad = (Elemento)cboDeb.SelectedItem;
+            {  
+                if (pokemon == null)
+                {
+                    pokemon = new Pokemon();
+                }
+                pokemon.Numero = int.Parse(txtNum.Text);
+                pokemon.Nombre = txtName.Text;
+                pokemon.Descripcion = txtDesc.Text;
+                pokemon.UrlImagen = txtUrlImagen.Text;
+                pokemon.Tipo = (Elemento)cboTipo.SelectedItem;
+                pokemon.Debilidad = (Elemento)cboDeb.SelectedItem;
 
-                negocio.agregar(poke);
-                MessageBox.Show("Agregado exitosamente");
+                if(pokemon.Id != 0)
+                {
+                    negocio.modificar(pokemon);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
+                    negocio.agregar(pokemon);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+                    
                 Close();
 
             }
@@ -66,7 +80,7 @@ namespace PokemonApp
                 cboDeb.DataSource = elementoNegocio.listar();
                 cboDeb.ValueMember = "Id";
                 cboDeb.DisplayMember = "Descripcion";
-
+                  
                 //validacion
                 if (pokemon != null)
                 {
