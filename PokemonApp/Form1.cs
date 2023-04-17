@@ -86,6 +86,8 @@ namespace PokemonApp
 
         private void btnEliminarFisico_Click(object sender, EventArgs e)
         {
+            eliminar();
+            /*
             PokemonNegocio negocio = new PokemonNegocio();
             Pokemon seleccionado;
             try
@@ -95,6 +97,41 @@ namespace PokemonApp
                 {
                     seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
                     negocio.eliminar(seleccionado.Id);
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            */
+        }
+
+        private void btnEliminarLogico_Click(object sender, EventArgs e)
+        {
+            eliminar(true);
+        }
+
+        private void eliminar(bool logico = false) //el parametro por defecto es falso
+        {
+            PokemonNegocio negocio = new PokemonNegocio();
+            Pokemon seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("De verdad, queres eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+
+                    if (logico)
+                    {
+                        negocio.eliminarLogico(seleccionado.Id);
+                    }
+                    else
+                    {
+                        negocio.eliminar(seleccionado.Id);
+                    }
                     cargar();
                 }
             }
