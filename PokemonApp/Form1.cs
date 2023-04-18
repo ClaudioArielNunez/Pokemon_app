@@ -141,5 +141,15 @@ namespace PokemonApp
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            List<Pokemon> listaFiltrada;
+
+            listaFiltrada = listaPokemon.FindAll(x => x.Nombre == txtFiltro.Text);
+
+            dgvPokemon.DataSource = null; //limpiamos la grid
+            dgvPokemon.DataSource = listaFiltrada;
+        }
     }
 }

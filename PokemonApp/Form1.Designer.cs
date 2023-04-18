@@ -34,6 +34,9 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminarFisico = new System.Windows.Forms.Button();
             this.btnEliminarLogico = new System.Windows.Forms.Button();
+            this.lblFiltro = new System.Windows.Forms.Label();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.btnFiltro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -101,11 +104,40 @@
             this.btnEliminarLogico.UseVisualStyleBackColor = true;
             this.btnEliminarLogico.Click += new System.EventHandler(this.btnEliminarLogico_Click);
             // 
+            // lblFiltro
+            // 
+            this.lblFiltro.AutoSize = true;
+            this.lblFiltro.Location = new System.Drawing.Point(31, 39);
+            this.lblFiltro.Name = "lblFiltro";
+            this.lblFiltro.Size = new System.Drawing.Size(44, 20);
+            this.lblFiltro.TabIndex = 6;
+            this.lblFiltro.Text = "Filtro";
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Location = new System.Drawing.Point(91, 36);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(253, 26);
+            this.txtFiltro.TabIndex = 7;
+            // 
+            // btnFiltro
+            // 
+            this.btnFiltro.Location = new System.Drawing.Point(382, 31);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(165, 37);
+            this.btnFiltro.TabIndex = 8;
+            this.btnFiltro.Text = "FILTRAR";
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1066, 450);
+            this.Controls.Add(this.btnFiltro);
+            this.Controls.Add(this.txtFiltro);
+            this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.btnEliminarLogico);
             this.Controls.Add(this.btnEliminarFisico);
             this.Controls.Add(this.btnModificar);
@@ -119,6 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPokemon)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -130,6 +163,9 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminarFisico;
         private System.Windows.Forms.Button btnEliminarLogico;
+        private System.Windows.Forms.Label lblFiltro;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.Button btnFiltro;
     }
 }
 
