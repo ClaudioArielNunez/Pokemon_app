@@ -153,10 +153,34 @@ namespace PokemonApp
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
+            /*
             List<Pokemon> listaFiltrada;
             string filtro = txtFiltro.Text;
 
             if(filtro != "")
+            {
+
+                listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()) || x.Tipo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaPokemon;
+            }
+
+
+            dgvPokemon.DataSource = null; //limpiamos la grid antes
+            dgvPokemon.DataSource = listaFiltrada;
+            ocultarColumnas();
+            */
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            //solo modifico el largo de caracteres del filtro en el if, el resto del codigo es igual
+            List<Pokemon> listaFiltrada;
+            string filtro = txtFiltro.Text;
+
+            if (filtro.Length >= 3)
             {
 
                 listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()) || x.Tipo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
