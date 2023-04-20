@@ -176,7 +176,7 @@ namespace PokemonApp
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
-            //solo modifico el largo de caracteres del filtro en el if, el resto del codigo es igual
+            //modifico el largo de caracteres del filtro en el if, el resto del codigo es igual
             List<Pokemon> listaFiltrada;
             string filtro = txtFiltro.Text;
 
