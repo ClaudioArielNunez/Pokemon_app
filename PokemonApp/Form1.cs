@@ -145,10 +145,20 @@ namespace PokemonApp
         private void btnFiltro_Click(object sender, EventArgs e)
         {
             List<Pokemon> listaFiltrada;
+            string filtro = txtFiltro.Text;
 
-            listaFiltrada = listaPokemon.FindAll(x => x.Nombre == txtFiltro.Text);
+            if(filtro != "")
+            {
 
-            dgvPokemon.DataSource = null; //limpiamos la grid
+                listaFiltrada = listaPokemon.FindAll(x => x.Nombre == txtFiltro.Text);
+            }
+            else
+            {
+                listaFiltrada = listaPokemon;
+            }
+
+
+            dgvPokemon.DataSource = null; //limpiamos la grid antes
             dgvPokemon.DataSource = listaFiltrada;
         }
     }
