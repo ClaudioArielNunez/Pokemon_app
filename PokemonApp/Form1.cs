@@ -27,9 +27,11 @@ namespace PokemonApp
 
         private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
         {
-            
-            Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagen);
+            if (dgvPokemon.CurrentRow != null) 
+            {
+                Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.UrlImagen);
+            }
         }
 
         private void ocultarColumnas()
