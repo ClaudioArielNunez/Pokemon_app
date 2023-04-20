@@ -31,6 +31,12 @@ namespace PokemonApp
             Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
             cargarImagen(seleccionado.UrlImagen);
         }
+
+        private void ocultarColumnas()
+        {
+            dgvPokemon.Columns["UrlImagen"].Visible = false;
+            dgvPokemon.Columns["Id"].Visible = false;
+        }
         private void cargar()
         {
             PokemonNegocio negocio = new PokemonNegocio();
@@ -38,8 +44,9 @@ namespace PokemonApp
             {
                 listaPokemon = negocio.listar();
                 dgvPokemon.DataSource = listaPokemon;
-                dgvPokemon.Columns["UrlImagen"].Visible = false;
-                dgvPokemon.Columns["Id"].Visible = false; //ocultamos Id y Url
+                ocultarColumnas();
+               // dgvPokemon.Columns["UrlImagen"].Visible = false;
+                //dgvPokemon.Columns["Id"].Visible = false; //ocultamos Id y Url
                 cargarImagen(listaPokemon[0].UrlImagen);
 
             }
@@ -160,6 +167,7 @@ namespace PokemonApp
 
             dgvPokemon.DataSource = null; //limpiamos la grid antes
             dgvPokemon.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }
