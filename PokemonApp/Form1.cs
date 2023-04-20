@@ -23,6 +23,11 @@ namespace PokemonApp
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            //Cargamos el primer combo box
+            cboCampo.Items.Add("Número");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripción");
+
         }
 
         private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
@@ -194,6 +199,26 @@ namespace PokemonApp
             dgvPokemon.DataSource = null; //limpiamos la grid antes
             dgvPokemon.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+
+            if(opcion == "Número")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
         }
     }
 }
