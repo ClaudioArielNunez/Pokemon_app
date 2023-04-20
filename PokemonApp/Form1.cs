@@ -159,7 +159,7 @@ namespace PokemonApp
             if(filtro != "")
             {
 
-                listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+                listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()) || x.Tipo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
             }
             else
             {
