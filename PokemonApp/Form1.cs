@@ -158,20 +158,33 @@ namespace PokemonApp
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
+            PokemonNegocio negocio = new PokemonNegocio(); //nos trae una lista
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+
+                dgvPokemon.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
             /*
             List<Pokemon> listaFiltrada;
             string filtro = txtFiltro.Text;
 
             if(filtro != "")
             {
-
                 listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()) || x.Tipo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
             }
             else
             {
                 listaFiltrada = listaPokemon;
             }
-
 
             dgvPokemon.DataSource = null; //limpiamos la grid antes
             dgvPokemon.DataSource = listaFiltrada;
