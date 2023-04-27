@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
+using System.Configuration;
 
 namespace PokemonApp
 {
     public partial class FrmAltaPokemon : Form
     {
         private Pokemon pokemon = null;
+        private OpenFileDialog archivo = null;
         public FrmAltaPokemon()
         {
             InitializeComponent();
@@ -58,6 +61,13 @@ namespace PokemonApp
                     negocio.agregar(pokemon);
                     MessageBox.Show("Agregado exitosamente");
                 }
+                //Guardo imagen si la levanto local
+                
+                if (archivo != null && !(txtUrlImagen.Text.Contains("http"))) 
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images_folder"] + archivo.SafeFileName);
+                }
+                
                     
                 Close();
 
@@ -121,6 +131,23 @@ namespace PokemonApp
                 pbxPokemon.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBqOKMMO9oLUSJnPu2CvEpWxYy8Q0oYDA8bA&usqp=CAU");
                 //MessageBox.Show("Ash no pudo capturar ese pokemon aún!");
             }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            //creamos un objeto para abrir archivos
+            //OpenFileDialog archivo = new OpenFileDialog();
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*jpg;|png|*.png";
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtUrlImagen.Text = archivo.FileName; //devuelve una cadena con el archivo
+                cargarImagen(archivo.FileName);
+
+                //Guardo la imagen
+                //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images_folder"] + archivo.SafeFileName);
+            }           
+
         }
     }
 }
