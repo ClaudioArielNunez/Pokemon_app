@@ -52,6 +52,8 @@ namespace negocio
             {
                 conexion.Open();
                 comando.ExecuteNonQuery();
+                //El método ExecuteNonQuery() se utiliza para ejecutar comandos que no devuelven ningún
+                //resultado, como las sentencias de actualización o inserción.
             }
             catch (Exception ex)
             {

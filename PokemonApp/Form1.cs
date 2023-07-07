@@ -44,7 +44,7 @@ namespace PokemonApp
             dgvPokemon.Columns["UrlImagen"].Visible = false;
             dgvPokemon.Columns["Id"].Visible = false;
         }
-        private void cargar()
+        private void cargar() 
         {
             PokemonNegocio negocio = new PokemonNegocio();
             try
